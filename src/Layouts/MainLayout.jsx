@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router'
 import Navbar from '../Components/Navbar'
-// import Footer from '../Component/Shared/Footer/Footer'
-// import Navbar from '../Component/Shared/Navbar/Navbar'
+import Footer from '../Components/Footer'
 const MainLayout = () => {
   return (
     <div className='bg-green-50'>
@@ -11,7 +10,7 @@ const MainLayout = () => {
 
         <Outlet />
       </div>
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </div>
   )
 }
