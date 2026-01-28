@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const AdminRecipes = () => {
+const AdminRecepies = () => {
   const [recipes, setRecipes] = useState([]);
   const [form, setForm] = useState({
     name: "",
@@ -56,4 +56,4 @@ const AdminRecipes = () => {
   );
 };
 
-export default AdminRecipes;
+export default AdminRecepies;

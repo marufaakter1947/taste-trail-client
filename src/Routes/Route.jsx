@@ -6,6 +6,7 @@ import Registration from "../Pages.jsx/Registration";
 import Login from "../Pages.jsx/Login";
 import PrivateRoute from "./PrivateRoute";
 import DashboardIndex from "../Pages.jsx/Dashboard/DashboardIndex";
+import AdminRecepies from "../Pages.jsx/Dashboard/AdminDashboard/AdminRecepies";
 
 export const router = createBrowserRouter([
   // Public Routes with MainLayout
@@ -30,6 +31,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <DashboardIndex /> },
       
+      { path: "recipes", element: <AdminRecepies /> },
 
     ],
   },
