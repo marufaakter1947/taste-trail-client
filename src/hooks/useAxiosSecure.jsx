@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router";
 import useAuth from "./useAuth";
 
+// Axios instance
 const axiosSecure = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
@@ -12,25 +13,23 @@ const useAxiosSecure = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // auto token attach
+    // Attach token automatically to headers
     const reqInterceptor = axiosSecure.interceptors.request.use(
       (config) => {
         if (token) {
-          config.headers.authorization = `Bearer ${token}`;
+          config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
       },
       (error) => Promise.reject(error)
     );
 
-    //Response 
+    // Handle 401/403 responses
     const resInterceptor = axiosSecure.interceptors.response.use(
-      (res) => res,
+      (response) => response,
       async (error) => {
-        if (
-          error.response?.status === 401 ||
-          error.response?.status === 403
-        ) {
+        if (error.response?.status === 401 || error.response?.status === 403) {
+          // Token expired or invalid, logout user
           await logOut();
           navigate("/login");
         }
@@ -38,7 +37,7 @@ const useAxiosSecure = () => {
       }
     );
 
-    // cleanup
+    // Cleanup interceptors when component unmounts
     return () => {
       axiosSecure.interceptors.request.eject(reqInterceptor);
       axiosSecure.interceptors.response.eject(resInterceptor);
