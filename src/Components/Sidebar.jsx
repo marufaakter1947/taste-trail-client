@@ -12,7 +12,7 @@ import { MdDashboard } from 'react-icons/md';
 // Role Menus
 import AdminMenu from './Menu/AdminMenu';
 import UserMenu from './Menu/UserMenu';
-import MenuItem from './Menu/MenuItem';
+import MenuItem from './Menu/MenuItem.jsx';
 import { FaPlusCircle, FaClipboardList } from 'react-icons/fa';
 
 const Sidebar = () => {

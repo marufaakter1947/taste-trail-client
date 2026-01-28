@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { toast } from "react-hot-toast";
 import useAuth from "../../hooks/useAuth";
-import AdminDashboardHome from "./Admin/AdminDashboardHome";
-import UserDashboardHome from "./User/UserDashboardHome";
-import LoadingSpinner from "../../Component/Shared/LoadingSpinner";
+import AdminDashboardHome from "./AdminDashboard/AdminDashboardHome";
+import UserDashboardHome from "./UserDashboard/UserDashboardHome";
+import LoadingSpinner from "../../Components/LoadingSpinner";
 import { Navigate } from "react-router";
 
 const DashboardIndex = () => {

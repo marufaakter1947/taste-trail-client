@@ -5,19 +5,21 @@ import Home from "../Pages.jsx/Home";
 import Registration from "../Pages.jsx/Registration";
 import Login from "../Pages.jsx/Login";
 import PrivateRoute from "./PrivateRoute";
+import DashboardIndex from "../Pages.jsx/Dashboard/DashboardIndex";
 
 export const router = createBrowserRouter([
-  // Public Routes
+  // Public Routes with MainLayout
   {
     path: "/",
     element: <MainLayout />,
-    // errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Home /> },
- { path: "/registration", element: <Registration /> },
- { path: "/login", element: <Login /> },
-      
- // Dashboard Routes (Private)
+      { path: "/registration", element: <Registration /> },
+      { path: "/login", element: <Login /> },
+    ],
+  },
+
+  // Private Dashboard Routes with DashboardLayout
   {
     path: "/dashboard",
     element: (
@@ -26,15 +28,9 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
-      // Dashboard Home
-      { index: true, element: <DashboardIndex></DashboardIndex> },
+      { index: true, element: <DashboardIndex /> },
+      
 
-     
     ],
   },
-     
-    ],
-  },
-
-  
 ]);
