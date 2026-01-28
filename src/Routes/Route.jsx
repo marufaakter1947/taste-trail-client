@@ -6,7 +6,6 @@ import Registration from "../Pages.jsx/Registration";
 import Login from "../Pages.jsx/Login";
 import PrivateRoute from "./PrivateRoute";
 import DashboardIndex from "../Pages.jsx/Dashboard/DashboardIndex";
-// import AdminRecepies from "../Pages.jsx/Dashboard/AdminDashboard/AdminRecepies";
 import AllUsers from "../Pages.jsx/Dashboard/AllUsers";
 import AddRecipe from "../Pages.jsx/Dashboard/AddRecipe";
 import ReviewApprovals from "../Pages.jsx/Dashboard/ReviewApprovals";
@@ -16,6 +15,7 @@ import Recipes from "../Pages.jsx/Dashboard/Recipes";
 import AdminRecipes from "../Pages.jsx/Dashboard/AdminDashboard/AdminRecipes";
 import EditRecipe from "../Pages.jsx/Dashboard/AdminDashboard/EditRecipe";
 import ManageRecipes from "../Pages.jsx/Dashboard/AdminDashboard/ManageRecipes";
+import RecipeDetails from "../Pages.jsx/RecipeDetails";
 
 export const router = createBrowserRouter([
   // Public Routes with MainLayout
@@ -50,14 +50,18 @@ path: "admin-recipes",
 element: <AdminRecipes />
 },
 {
+path: "/recipes/:id",
+element: <RecipeDetails />
+},
+{
 path: "edit-recipe/:id",
 element: <EditRecipe />
 },
-{
-path: "admin-recipes",
-element: <ManageRecipes />
-}
-,
+// {
+// path: "manage-recipes",
+// element: <ManageRecipes />
+// }
+// ,
   // User pages
   { path: "meal-planner", element: <MealPlanner /> },
   { path: "my-reviews", element: <MyReviews /> },

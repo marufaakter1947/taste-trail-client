@@ -28,7 +28,7 @@ const ManageRecipes = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold text-red-600 mb-4">Manage Recipes</h2>
+      <h2 className="text-2xl font-bold text-green-600 mb-4">Manage Recipes</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {recipes.map(r => (

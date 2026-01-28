@@ -63,11 +63,7 @@ const Sidebar = () => {
             {/* Extra for admin */}
             {role === 'admin' && (
               <>
-                <MenuItem
-                  icon={FaPlusCircle}
-                  label="Add Recipe"
-                  address="/dashboard/add-recipe"
-                />
+                
                 <MenuItem
                   icon={FaClipboardList}
                   label="All Recipes"

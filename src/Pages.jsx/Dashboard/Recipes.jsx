@@ -13,7 +13,7 @@ const Recipes = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold text-red-600 mb-4">Browse Recipes</h2>
+      <h2 className="text-2xl font-bold text-green-600 mb-4 text-center">Browse All Available Recipes</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {recipes.map(r => (
@@ -27,7 +27,7 @@ const Recipes = () => {
             <div className="mt-3">
               <Link 
                 to={`/recipes/${r._id}`} 
-                className="btn btn-sm btn-outline"
+                className="btn btn-sm  w-full bg-green-300 hover:bg-green-600"
               >
                 View Details
               </Link>

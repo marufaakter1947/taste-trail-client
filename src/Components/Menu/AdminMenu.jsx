@@ -5,6 +5,7 @@ const AdminMenu = () => {
   return (
     <>
       <MenuItem icon={FaUsers} label="All Users" address="/dashboard/all-users" />
+     
       <MenuItem 
   icon={FaClipboardList}
   label="Manage Recipes"

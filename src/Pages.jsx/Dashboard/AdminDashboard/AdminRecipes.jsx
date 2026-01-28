@@ -1,62 +1,3 @@
-// import { useEffect, useState } from "react";
-// import axios from "axios";
-// import toast from "react-hot-toast";
-
-// const AdminRecepies = () => {
-//   const [recipes, setRecipes] = useState([]);
-//   const [form, setForm] = useState({
-//     name: "",
-//     ingredients: "",
-//     instructions: "",
-//     category: "",
-//     cuisine: "",
-//     cookingTime: "",
-//     calories: "",
-//     image: ""
-//   });
-
-//   const fetchRecipes = async () => {
-//     const res = await axios.get("/api/admin/recipes");
-//     setRecipes(res.data);
-//   };
-
-//   useEffect(() => { fetchRecipes(); }, []);
-
-//   const handleAdd = async () => {
-//     await axios.post("/api/admin/recipes", {
-//       ...form,
-//       ingredients: form.ingredients.split(",")
-//     });
-//     toast.success("Recipe added!");
-//     fetchRecipes();
-//   };
-
-//   const handleDelete = async (id) => {
-//     await axios.delete(`/api/admin/recipes/${id}`);
-//     toast.success("Recipe deleted!");
-//     fetchRecipes();
-//   };
-
-//   return (
-//     <div>
-//       <h2>Admin Recipe Management</h2>
-//       <input placeholder="Recipe Name" onChange={e => setForm({...form, name: e.target.value})} />
-//       <input placeholder="Ingredients (comma separated)" onChange={e => setForm({...form, ingredients: e.target.value})} />
-//       <button onClick={handleAdd}>Add Recipe</button>
-
-//       <ul>
-//         {recipes.map(r => (
-//           <li key={r._id}>
-//             {r.name} 
-//             <button onClick={() => handleDelete(r._id)}>Delete</button>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
-
-// export default AdminRecepies;
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router";
@@ -81,29 +22,50 @@ const AdminRecipes = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Recipe Management</h2>
+      <h2 className="text-2xl font-bold text-green-600 text-center mb-4">Recipe Management</h2>
 
       {recipes.map(recipe => (
-        <div key={recipe._id} className="border p-3 mb-3 rounded">
-          <h3 className="font-semibold">{recipe.name}</h3>
+  <div
+    key={recipe._id}
+    className="flex flex-col sm:flex-row items-start sm:items-center gap-4 border p-2 mb-4 rounded-lg shadow-sm"
+  >
+    {/* Image */}
+    <img
+      src={recipe.image}
+      alt={recipe.name}
+      className="w-full sm:w-22 h-22 object-cover rounded"
+    />
 
-          <div className="flex gap-3 mt-2">
-            <Link
-              to={`/dashboard/edit-recipe/${recipe._id}`}
-              className="btn btn-sm btn-info"
-            >
-              Edit
-            </Link>
+    {/* Middle info */}
+    <div className="flex-1">
+      <h3 className="font-semibold text-lg mb-2">{recipe.name}</h3>
 
-            <button
-              onClick={() => handleDelete(recipe._id)}
-              className="btn btn-sm btn-error"
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      ))}
+      <Link
+        to={`/recipes/${recipe._id}`}
+        className="btn btn-sm bg-green-300 hover:bg-green-600"
+      >
+        View Details
+      </Link>
+    </div>
+
+    {/* Actions */}
+    <div className="flex gap-2 self-end sm:self-auto">
+      <Link
+        to={`/dashboard/edit-recipe/${recipe._id}`}
+        className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
+      >
+        Edit
+      </Link>
+
+      <button
+        onClick={() => handleDelete(recipe._id)}
+        className="px-3 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+))}
     </div>
   );
 };
