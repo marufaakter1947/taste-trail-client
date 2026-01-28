@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../Layouts/MainLayout";
+import DashboardLayout from "../Layouts/DashboardLayout";
 import Home from "../Pages.jsx/Home";
 import Registration from "../Pages.jsx/Registration";
 import Login from "../Pages.jsx/Login";

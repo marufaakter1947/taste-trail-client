@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
-import useAuth from '../../../hooks/useAuth';
-import useRole from '../../../hooks/useRole';
+import useAuth from '../hooks/useAuth';
+import useRole from '../hooks/useRole.jsx';
 import logo from '../assets/logo.png';
 
 import { GrLogout } from 'react-icons/gr';
