@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import toast from "react-hot-toast";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthContext";
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +25,8 @@ const Registration = () => {
     setError("");
   };
 
+  const { login } = useContext(AuthContext);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,15 +41,18 @@ const Registration = () => {
     }
 
     try {
-      setLoading(true);
+    const res = await axios.post("http://localhost:5000/auth/register", formData);
 
-      const res = await axios.post(
-        "http://localhost:5000/auth/register",
-        formData
-      );
+const userInfo = {
+  fullName: formData.fullName,
+  email: formData.email,
+  photo: formData.photo || "https://i.ibb.co/2kR1Y0F/default-avatar.png",
+  role: res.data.role,
+};
 
-      localStorage.setItem("tasteTrailToken", res.data.token);
-      toast.success("Registration successful!");
+login(userInfo, res.data.token);
+
+toast.success("Registration successful");
 
       // Role based redirect
       if (res.data.role === "admin") {
@@ -121,7 +128,7 @@ const Registration = () => {
       <button
         disabled={loading}
         type="submit"
-        className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded"
+        className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded cursor-pointer"
       >
         {loading ? "Creating account..." : "Register"}
       </button>

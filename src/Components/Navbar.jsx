@@ -1,6 +1,8 @@
 import { AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
 import { Link, NavLink } from "react-router";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthContext";
 // import useAuth from "../hooks/useAuth";
 import avatarImg from "../assets/default-avatar.jpg";
 import logo from "../assets/logo.png";
@@ -18,7 +20,7 @@ const mobileNav = ({ isActive }) =>
 const Navbar = () => {
 //   const { user, logOut } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
-
+const { user, logout } = useContext(AuthContext);
   return (
     <div className="bg-green-50 fixed inset-x-0 top-0 z-50">
       <div className="  shadow rounded">
@@ -52,16 +54,12 @@ const Navbar = () => {
                 className="flex items-center gap-2 border p-2 rounded-full cursor-pointer hover:shadow"
               >
                 <AiOutlineMenu />
-                {/* <img
-                  src={user?.photoURL || avatarImg}
+                <img
+                  src={user?.photo || avatarImg}
                   className="rounded-full"
                   width="20"
-                /> */}
-                 <img
-                  src={ avatarImg}
-                  className="rounded-full"
-                  width="20"
-                /> 
+                />
+                
               </div>
 
               {isOpen && (
@@ -91,19 +89,19 @@ const Navbar = () => {
                       <hr />
                     </div>
 
-                    {/* {user ? (
+                    {user ? (
                       <>
                         <NavLink to="/dashboard" className={mobileNav}>
                           Dashboard
                         </NavLink>
                         <button
-                          onClick={logOut}
+                          onClick={logout}
                           className="px-4 py-3 text-left hover:bg-neutral-100"
                         >
                           Logout
                         </button>
                       </>
-                    ) : ( */}
+                    ) : (
                       <>
                         <NavLink to="/login" className={mobileNav}>
                           Login
@@ -112,7 +110,7 @@ const Navbar = () => {
                           Register
                         </NavLink>
                       </>
-                    {/* )} */}
+                    )} 
                   </div>
                 </div>
               )}
