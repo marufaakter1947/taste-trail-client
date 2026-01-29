@@ -13,10 +13,10 @@ const AllUsers = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold text-red-600 mb-4">All Users</h2>
+      <h2 className="text-2xl font-bold text-green-600 mb-4">All Users</h2>
       <table className="w-full text-left border">
         <thead>
-          <tr className="bg-red-100">
+          <tr className="bg-green-100">
             <th className="p-2">Name</th>
             <th className="p-2">Email</th>
             <th className="p-2">Role</th>
@@ -25,7 +25,7 @@ const AllUsers = () => {
         </thead>
         <tbody>
           {users.map(u => (
-            <tr key={u._id} className="border-b hover:bg-red-50">
+            <tr key={u._id} className="border-b hover:bg-green-50">
               <td className="p-2">{u.fullName}</td>
               <td className="p-2">{u.email}</td>
               <td className="p-2">{u.role}</td>

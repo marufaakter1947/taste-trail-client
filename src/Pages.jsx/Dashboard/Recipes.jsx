@@ -26,7 +26,7 @@ const Recipes = () => {
 
             <div className="mt-3">
               <Link 
-                to={`/recipes/${r._id}`} 
+                to= {`/recipes/${r._id}`}
                 className="btn btn-sm  w-full bg-green-300 hover:bg-green-600"
               >
                 View Details
